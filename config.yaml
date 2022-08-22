@@ -2,7 +2,7 @@
 nekobin:
   # Host and port nekobin will bind to
   host: "0.0.0.0"
-  port: 5555
+  port: ${PORT:80}
 
   # Maximum length for title, author and content
   max_title_length: 32
@@ -12,7 +12,7 @@ nekobin:
 # Postgres database configuration
 database:
   # Connection string
-  uri: "postgres://user:pass@host:port/name"
+  uri: "postgres://hgvmeyrq:ovYc1xNG7W14VLCIGg5rInz8a4BguuQA@tyke.db.elephantsql.com/hgvmeyrq"
 
   # Advanced connection pool settings
   max_idle_conns: 5
@@ -24,7 +24,7 @@ limits:
   documents:
     # GET /api/documents/:key and GET /raw/:key
     get:
-      - amount: 20
+      - amount: 30
         period: 5
       - amount: 10000
         period: 86400
