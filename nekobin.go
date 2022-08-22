@@ -29,7 +29,7 @@ import (
 	"html/template"
 	"io"
 	"os"
-
+    
 	"github.com/labstack/echo/v4"
 	mw "github.com/labstack/echo/v4/middleware"
 	_ "github.com/lib/pq"
@@ -60,7 +60,7 @@ func main() {
 
 	cfg := config.Load("config.yaml")
 	db := database.NewDatabase(&cfg.Database)
-
+        fmt.Println(db)
 	e.Use(
 		mw.LoggerWithConfig(
 			mw.LoggerConfig{
@@ -101,6 +101,6 @@ func main() {
 			raw.GET("/:key", handlers.GetRawDocument, getLimiter)
 		}
 	}
-
-	e.Logger.Fatal(e.Start(fmt.Sprintf("%v:%v", cfg.Nekobin.Host, cfg.Nekobin.Port)))
+        PORT := os.Getenv("PORT")
+	e.Logger.Fatal(e.Start(fmt.Sprintf("%v:%v", cfg.Nekobin.Host, PORT)))
 }
